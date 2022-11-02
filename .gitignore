@@ -11,3 +11,4 @@ dist
 content/.obsidian
 .DS_Store
 .obsidian
+content/**/*
