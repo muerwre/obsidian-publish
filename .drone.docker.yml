@@ -1,0 +1,28 @@
+kind: pipeline
+name: build
+type: docker
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build-master
+    image: plugins/docker
+    when:
+      branch:
+        - master
+    settings:
+      dockerfile: docker/Dockerfile
+      tag:
+        - ${DRONE_BRANCH}
+      custom_labels:
+        - "commit=${DRONE_COMMIT_SHA}"
+      username:
+        from_secret: global_docker_login
+      password:
+        from_secret: global_docker_password
+      registry:
+        from_secret: global_docker_registry
+      repo:
+        from_secret: docker_repo

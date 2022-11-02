@@ -1,0 +1,29 @@
+kind: pipeline
+name: build
+type: docker
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build
+    image: node:16
+    commands:
+      - yarn
+      - yarn generate
+      - rm -rf ./docs
+      - mv ./.output/public ./docs
+      - touch ./docs/.nojekyll
+  - name: publish
+    image: plugins/gh-pages
+    settings:
+      target_branch: gh-pages
+      ssh_key:
+        from_secret: global_ssh_key
+      username:
+        from_secret: github_username
+      password:
+        from_secret: global_github_token
+      ssh_key:
+        from_secret: global_ssh_key

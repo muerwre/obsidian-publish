@@ -1,0 +1,27 @@
+@import "./variables";
+
+@mixin phone {
+  @media (max-width: $size-phone) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $size-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $size-desktop) {
+    @content;
+  }
+}
+
+@mixin color-per-child($colors) {
+  @each $color in $colors {
+    &:nth-child(#{index(($colors), ($color))}) {
+      color: $color;
+    }
+  }
+}

@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&family=Roboto:wght@400;700&display=swap");
+@import "./variables";
+@import "./transitions.scss";
+
+body,
+html {
+  font-family: var(--family-roboto);
+  background: var(--color-background);
+  color: var(--color-text);
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  transition: color 250ms;
+}
+
+a {
+  color: var(--color-link);
+
+  h1 > &,
+  h2 > &,
+  h3 > &,
+  h4 > &,
+  h5 > & {
+    text-decoration: none;
+    color: var(--color-header);
+  }
+}
+
+pre {
+  background-color: var(--color-code-background);
+  padding: 10px;
+  border-radius: 10px;
+  overflow: scroll;
+  width: 100%;
+  line-height: 1.5em;
+}
+
+p > code {
+  background-color: var(--color-code-background);
+  color: var(--color-code-inline);
+  padding: 0 5px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--family-roboto-slab);
+  color: var(--color-header);
+  font-weight: 700;
+}
+
+h1 {
+  color: var(--color-heading-primary);
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
+}
+
+h2 {
+  color: var(--color-heading-secondary);
+
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+}
+
+h3,
+h4,
+h5 {
+  color: var(--color-heading-tertiary);
+}
+
+p,
+li {
+  line-height: 1.45em;
+}
+
+li {
+  &:not(:last-child) {
+    margin-bottom: 0.25em;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+
+  &:focus {
+    border: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid var(--color-line);
+
+  td,
+  th {
+    border: 1px solid var(--color-line);
+    padding: 5px 10px;
+    text-align: left;
+  }
+
+  thead {
+    background: var(--color-table-head);
+    border-bottom: 2px solid var(--color-line);
+  }
+}
+
+blockquote {
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-text);
+  padding: 0 20px;
+
+  ul,
+  ol {
+    padding-left: 15px;
+  }
+}
+
+.highlight {
+  background-color: var(--color-highlight-background);
+  color: var(--color-highlight-color);
+  padding: 0 1px;
+  border-radius: 3px;
+}
+
+:root {
+  // fonts
+  --family-roboto-slab: "Roboto Slab", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+  --family-roboto: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  // breakpoints
+  --size-phone: $phone;
+  --size-tablet: $size-tablet;
+  --size-desktop: $size-desktop;
+}
+
+:root.dark {
+  // palette
+  --color-primary: #e84a72;
+  --color-background: #16161c;
+  --color-menu-background: #1a1c23;
+  --color-line: #2d2f36;
+  --color-menu-overlay-background: #{transparentize(#16161c, 0.1)};
+  --color-code-background: #1a1c23;
+  --color-code-language-background: #{lighten(#1a1c23, 4%)};
+  --color-code-language-name: #1eaeae;
+  --color-text: #fdf0ed;
+  --color-text-secondary: #{mix(#ffffff, #1a1c23, 60%)};
+  --color-link: #e84a72;
+  --color-code-inline: #1eb980;
+  --color-heading-primary: white;
+  --color-heading-secondary: #f9cbbe;
+  --color-heading-tertiary: #f9cec3;
+  --color-menu-title: #fadad1;
+  --color-menu-link: #fab28e;
+  --color-menu-link-active: #e84a72;
+  --color-menu-line: #2e303e;
+  --color-table-head: #{mix(#e84a72, #1a1c23, 10%)};
+  --color-rating-1: #ded187;
+  --color-rating-2: #dbde87;
+  --color-rating-3: #bade87;
+  --color-rating-4: #9cde87;
+  --color-rating-5: #87deaa;
+  --color-highlight-color: var(--color-text);
+  --color-highlight-background: #254e50;
+}
+
+:root.light {
+  $pinky: #{mix(#fadad1, #fce9e4, 50%)};
+
+  --color-primary: #e84a72;
+  --color-background: #fce9e4;
+  --color-menu-background: #{$pinky};
+  --color-line: #{$pinky};
+  --color-menu-overlay-background: #{transparentize(#16161c, 0.1)};
+  --color-code-background: #{$pinky};
+  --color-code-language-background: #{lighten(#1a1c23, 4%)};
+  --color-code-language-name: #1eaeae;
+  --color-text: #5a5d68;
+  --color-text-secondary: #{mix(#ffffff, #5a5d68, 20%)};
+  --color-link: #e84a72;
+  --color-code-inline: #8931b9;
+  --color-heading-primary: #4c5161;
+  --color-heading-secondary: #{mix(#f9cbbe, #1eaeae, 35%)};
+  --color-heading-tertiary: #{mix(#f9cbbe, #1eaeae, 35%)};
+  --color-menu-title: #{mix(#f9cbbe, #1eaeae, 35%)};
+  --color-menu-link: #{mix(#f9cbbe, #e84a72, 20%)};
+  --color-menu-link-active: #e84a72;
+  --color-menu-line: #f9cbbe;
+  --color-table-head: #{mix(#e84a72, #fadad1, 10%)};
+  --color-highlight-color: var(--color-text);
+  --color-highlight-background: #fab795;
+}
