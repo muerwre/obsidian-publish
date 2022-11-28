@@ -82,6 +82,10 @@ h5 {
 p,
 li {
   line-height: 1.45em;
+
+  img {
+    max-inline-size: 100%;
+  }
 }
 
 li {
